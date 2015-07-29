@@ -3,8 +3,6 @@ E:\samples\ContactManager\Data\bin\Data.dll
 E:\samples\ContactManager\Data\bin\Data.pdb
 E:\samples\ContactManager\Data\bin\ContactManagerDomain.dll
 E:\samples\ContactManager\Data\bin\ContactManagerDomain.pdb
-E:\samples\ContactManager\Data\bin\EntityFramework.xml
-E:\samples\ContactManager\Data\bin\EntityFramework.SqlServer.xml
 E:\samples\ContactManager\Data\obj\Debug\ContactManagerData.csprojResolveAssemblyReference.cache
 E:\samples\ContactManager\Data\obj\Debug\Data.dll
 E:\samples\ContactManager\Data\obj\Debug\Data.pdb

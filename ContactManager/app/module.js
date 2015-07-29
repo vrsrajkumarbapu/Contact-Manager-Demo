@@ -5,20 +5,35 @@ debugger;
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
     .when('/demo', { templateUrl: '/home/demo', controller: 'DemoController' })
-        .when('/profile', { templateUrl: '/home/profile', controller: 'ProfileController' })
-    .otherwise({ redirectTo: '/demo' });
-}])
-.controller('RootController', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {
-    $scope.$on('$routeChangeSuccess', function (e, current, previous) {
-        $scope.activeViewPath = $location.path();
-
-    });
 }]);
+app.directive('numeric', function () {
+    return {
+        require: 'ngModel',
+        restrict: 'A',
+        link: function (scope, element, attr, ctrl) {
 
+            function inputValue(val) {
+                if (val) {
+                    var digits = val.replace(/[^0-9]/g, '');
 
+                    if (digits !== val) {
+                        ctrl.$setViewValue(digits);
+                        ctrl.$render();
+                    }
+                    return parseInt(digits, 10);
+                }
+                else if (val.trim() == '')
+                    return true;
+                return undefined;
+            }
+            ctrl.$parsers.push(inputValue);
+        }
+    };
+});
 app.controller('DemoController', function ($scope, dataService) {
-    $scope.contactdetaildata = [];
-    clearText();
+    //$scope.contactdetaildata = [];
+    //clearText();
+    $scope.show = true;
     loadRecords();
 
 
@@ -26,6 +41,7 @@ app.controller('DemoController', function ($scope, dataService) {
         var contactdetaildata = dataService.get();
         contactdetaildata.then(function (pdata) {
             $scope.contactdetaildata = pdata.data;
+            $scope.show = true;
         },
         function (error) {
             alert('error');
@@ -35,14 +51,23 @@ app.controller('DemoController', function ($scope, dataService) {
         if (confirm('Are you Sure?')) {
             var deleteContactdetail = dataService.delete(data);
             deleteContactdetail.then(function (pd) {
-                loadRecords();
                 alert('Data Deleted Successfully');
+                clearText();
+                loadRecords();
+                
             }, function (error) {
                 alert('An error Occured');
             });
         }
     };
+    
+    $scope.cancel = function () {
+        //$scope.clear();
+        $scope.show = true;
+        
+    };
     $scope.select = function (data) {
+        $scope.show = false;
         $scope.contactdetail = data;
     };
     $scope.save = function () {
@@ -52,6 +77,7 @@ app.controller('DemoController', function ($scope, dataService) {
             var updateContactdetail = dataService.put(saveData);
             updateContactdetail.then(function (prmData) {
                 alert('Data updated');
+               
                 loadRecords();
             }, function (error) {
                 alert('An error occured');
@@ -69,25 +95,11 @@ app.controller('DemoController', function ($scope, dataService) {
     $scope.clear = function () {
         clearText();
     }
-    //ID
-    //FirstName
-    //LastName
-    //Email
-    //Born
-    //Cellphone
-    //IsActive
+  
     function clearText() {
-        //var contactdetail = {};
-        //newPerson.ID = 0;
-        //newPerson.FirstName = "";
-        //newPerson.LastName = "";
-        //newPerson.Born = "";
-        //newPerson.Cellphone = "";
-        //newPerson.Email = "";
-        //newPerson.IsActive = false;
-        debugger;
+       
         $scope.contactdetail = { ID: 0, FirstName: '', LastName: '', Email: '', Born: '', Cellphone: '', IsActive: false };
-
+        $scope.show = false;
     }
 });
 var app=
@@ -99,6 +111,7 @@ angular.module('contactDetailApp').service('dataService', ['$http', function ($h
             url: baseUrl,
             data: contactdetail
         });
+        return request;
     }
     this.put = function (contactdetail) {
         var request = $http({
@@ -106,6 +119,7 @@ angular.module('contactDetailApp').service('dataService', ['$http', function ($h
             url: baseUrl,
             data: contactdetail
         });
+        return request;
     }
     this.delete = function (contactdetail) {
         var request = $http({
@@ -120,53 +134,3 @@ angular.module('contactDetailApp').service('dataService', ['$http', function ($h
 }]);
 
 
-app.directive('serverValidate', ['$http', function ($http) {
-    return {
-        require: 'ngModel',
-        restrict: 'A',
-        link: function (scope, ele, attrs, c) {
-            //console.log('wiring up ' + attrs.ngModel + ' to controller ' + c.$name);
-            scope.$watch('modelState', function () {
-                if (scope.modelState == null) return;
-                var modelStateKey = attrs.serverValidate || attrs.ngModel;
-                modelStateKey = modelStateKey.replace('$index', scope.$index);
-                //console.log('validation for ' + modelStateKey);
-                modelStateKey.indexOf(".");
-                //modelStateKey = 'entity.' + modelStateKey.substring(modelStateKey.indexOf(".") + 1, modelStateKey.length);
-                modelStateKey = modelStateKey.substring(modelStateKey.indexOf(".") + 1, modelStateKey.length);
-                var statemodel;
-                var errormodel = null;
-                for (var i = 0; i < scope.modelState.length; i++) {
-
-                    if (scope.modelState[i].PropertyName == modelStateKey) {
-                        errormodel = scope.modelState[i];
-                        break;
-                    }
-                }
-                c.$setValidity('server', true);
-                if (errormodel != null) {
-                    c.$setValidity('server', false);
-                    c.$error.server = { "errorMessage": errormodel.ErrorMessage };
-
-                } else {
-                    c.$setValidity('server', true);
-                }
-
-
-                ele.bind('focus', function (evt) {
-                    c.$setValidity('server', true);
-                }).bind('blur', function (evt) {
-                    c.$setValidity('server', true);
-                });
-            });
-
-            scope.$watch(attrs.ngModel, function (oldValue, newValue) {
-
-                if (oldValue != newValue) {
-                    c.$setValidity('server', true);
-                    c.$error.server = '';
-                }
-            });
-        }
-    };
-}]);

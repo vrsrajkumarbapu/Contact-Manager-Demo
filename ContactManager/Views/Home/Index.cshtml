@@ -2,80 +2,108 @@
     ViewBag.Title = "Contact Manager";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="row">
-    <div class="col-md-8">
-        <h2 class="sub-header">Contact Detail Entry</h2>
-        <form class="form-horizontal" role="form">
-            <ng-form name="contactmanagerform">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">First Name</label>
-                    <div class="col-sm-10">
-                        <input name="FirstName" class="form-control" type="text" ng-model="contactdetail.FirstName" placeholder="type first Name here"
-                                required maxlength="50" />
-                        <span style="color:red" ng-show="contactmanagerform.FirstName.$dirty && generalTab.FirstName.$invalid">
-                            <span ng-show="contactmanagerform.FirstName.$error.required">First Name is required.</span>
-                        </span>
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Last Name</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" type="text" ng-model="contactdetail.LastName" placeholder="type last name here" required />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Email
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" ng-model="contactdetail.Email"
-                               placeholder=" type email here">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        DOB
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" ng-model="contactdetail.Born"
-                               placeholder=" type dob here" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Cell Phone
-                    </label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" ng-model="contactdetail.Cellphone"
-                               placeholder=" type cell number here">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">
-                        Is Active
-                    </label>
-                    <div class="col-sm-1">
-                        <input type="checkbox" class="form-control" ng-model="contactdetail.IsActive" ng-checked="contactdetail.IsActive" />
-
-                    </div>
+<style>
+table, th, td {
+   border: 1px solid black;
+}
+</style>
+<div ng-cloak>
 
 
-                    <div class="col-sm-10">
-                        <button style="float:right; margin:10px;" ng-click="save()" class="btn-primary btn-sm ">Save</button>
-                        <button style="float:right; margin:10px;" ng-click="clear()" class="btn-primary btn-sm ">Add</button>
-                    </div>
-                </div>
-            </ng-form>
-</form>
+    <div class="col-sm-10">
+        <button style="float:right; margin:10px;" ng-click="save()" class="btn-primary btn-sm " ng-show="!show">Save</button>
+        <button style="float:right; margin:10px;" ng-click="clear()" class="btn-primary btn-sm " ng-show="show">Add</button>
+        <button style="float:right; margin:10px;" ng-click="cancel()" class="btn-primary btn-sm " ng-show="!show">Cancel</button>
     </div>
-</div>
-     <div class="row">
+    <div class="row" ng-show="!show">
+        <div class="col-md-8">
+            <h2 class="sub-header">Contact Detail Entry</h2>
+            <form class="form-horizontal" role="form" ng-cloak>
+                <ng-form name="contactmanagerform" validate>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">First Name</label>
+                        <div class="col-sm-10">
+                            <input name="FirstName" class="form-control" type="text" ng-model="contactdetail.FirstName" placeholder="type first Name here"
+                                   required maxlength="50" />
+                            <span style="color:red" ng-show="contactmanagerform.FirstName.$dirty && contactmanagerform.FirstName.$invalid">
+                                <span ng-show="contactmanagerform.FirstName.$error.required">First Name is required.</span>
+                            </span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Last Name</label>
+                        <div class="col-sm-10">
+
+                            <input name="LastName" class="form-control" type="text" ng-model="contactdetail.LastName" placeholder="type last Name here"
+                                   required maxlength="50" />
+                            <span style="color:red" ng-show="contactmanagerform.LastName.$dirty && contactmanagerform.LastName.$invalid">
+                                <span ng-show="contactmanagerform.LastName.$error.required">Last Name is required.</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Email
+                        </label>
+                        <div class="col-sm-10">
+
+
+
+                            <input name="Email" class="form-control" type="text" ng-model="contactdetail.Email" placeholder="type email here"
+                                   required maxlength="50" />
+                            <span style="color:red" ng-show="contactmanagerform.Email.$dirty && contactmanagerform.Email.$invalid">
+                                <span ng-show="contactmanagerform.Email.$error.required">Email is required.</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            DOB
+                        </label>
+                        <div class="col-sm-10">
+                            <input name="Born" class="form-control" type="text" ng-model="contactdetail.Born" placeholder="type dob here"
+                                   required maxlength="50" />
+                            <span style="color:red" ng-show="contactmanagerform.Born.$dirty && contactmanagerform.Born.$invalid">
+                                <span ng-show="contactmanagerform.Born.$error.required">DOB is required.</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Cell Phone
+                        </label>
+                        <div class="col-sm-10">
+                            <input name="Cellphone" class="form-control" type="text" ng-model="contactdetail.Cellphone" placeholder="type cell phone number here"
+                                   numeric required maxlength="50" />
+                            <span style="color:red" ng-show="contactmanagerform.Cellphone.$dirty && contactmanagerform.Cellphone.$invalid">
+                                <span ng-show="contactmanagerform.Cellphone.$error.required">Cell phone is required.</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">
+                            Is Active
+                        </label>
+                        <div class="col-sm-1">
+                            <input type="checkbox" class="form-control" ng-model="contactdetail.IsActive" ng-checked="contactdetail.IsActive" />
+
+                        </div>
+
+
+
+                    </div>
+                </ng-form>
+            </form>
+        </div>
+
+    </div>
+    <div class="row" ng-show="show">
         <div class="col-md-10">
             <h2 class="sub-header">Contact Details</h2>
             <div>
-                <table class="table">                    
+                <table class="table tblBorder">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -85,10 +113,12 @@
                             <th>Born</th>
                             <th>Cell Phone</th>
                             <th>Is Active</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody ng-repeat="Contact in contactdetaildata">
-                        <tr ng-click="update(Contact)">
+                        <tr ng-click="select(Contact)">
                             <td>{{Contact.ID}}</td>
                             <td>{{Contact.FirstName}}</td>
                             <td>{{Contact.LastName}}</td>
@@ -118,3 +148,4 @@
 
     </div>
 
+</div>
