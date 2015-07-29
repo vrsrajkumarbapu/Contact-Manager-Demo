@@ -1,0 +1,11 @@
+E:\samples\ContactManager\ContactManagerService\bin\ContactManagerService.dll
+E:\samples\ContactManager\ContactManagerService\bin\ContactManagerService.pdb
+E:\samples\ContactManager\ContactManagerService\bin\ContactManagerDomain.dll
+E:\samples\ContactManager\ContactManagerService\bin\Data.dll
+E:\samples\ContactManager\ContactManagerService\bin\EntityFramework.dll
+E:\samples\ContactManager\ContactManagerService\bin\ContactManagerDomain.pdb
+E:\samples\ContactManager\ContactManagerService\bin\Data.pdb
+E:\samples\ContactManager\ContactManagerService\bin\EntityFramework.xml
+E:\samples\ContactManager\ContactManagerService\obj\Debug\ContactManagerService.csprojResolveAssemblyReference.cache
+E:\samples\ContactManager\ContactManagerService\obj\Debug\ContactManagerService.dll
+E:\samples\ContactManager\ContactManagerService\obj\Debug\ContactManagerService.pdb

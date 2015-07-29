@@ -1,0 +1,45 @@
+﻿@{
+
+}
+
+<!DOCTYPE html>
+
+<html ng-app="contactDetailApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Contact Manager</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    
+    
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-cookies.min.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/app/module.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</head>
+<body ng-controller="DemoController">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default">
+        <div class="container">
+            <a class="navbar-brand" href="#">Contact Manager</a>
+            @*<ul class="nav navbar-nav">
+                <li><a href="#/demo">Home</a></li>
+                <li class="active"><a href="#/demo">Demo</a></li>
+                <li><a href="#/profile">Link</a></li>
+                <li class="divider-vertical"></li>
+                <li><a href="#">More</a></li>
+                <li><a href="#">Options</a></li>
+            </ul>*@
+        </div>
+    </div>
+    <div class="container" role="main">
+
+        @RenderBody()
+    </div>
+
+    @* @Scripts.Render("~/bundles/angularApp")*@
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManager", "ContactManager\ContactManager.csproj", "{EAD5762A-01A8-47F4-BE2F-3FDAB70E39AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagerData", "Data\ContactManagerData.csproj", "{5A0EC088-5FE5-4018-987F-74CA260BA20A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagerDomain", "ContactManagerDomain\ContactManagerDomain.csproj", "{3736AE63-0361-42F0-ADC4-BF3F1110C043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagerService", "ContactManagerService\ContactManagerService.csproj", "{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4690E128-8375-4CA9-ACA8-1A1827DAEA0D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAD5762A-01A8-47F4-BE2F-3FDAB70E39AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD5762A-01A8-47F4-BE2F-3FDAB70E39AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD5762A-01A8-47F4-BE2F-3FDAB70E39AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD5762A-01A8-47F4-BE2F-3FDAB70E39AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A0EC088-5FE5-4018-987F-74CA260BA20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A0EC088-5FE5-4018-987F-74CA260BA20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A0EC088-5FE5-4018-987F-74CA260BA20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A0EC088-5FE5-4018-987F-74CA260BA20A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3736AE63-0361-42F0-ADC4-BF3F1110C043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3736AE63-0361-42F0-ADC4-BF3F1110C043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3736AE63-0361-42F0-ADC4-BF3F1110C043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3736AE63-0361-42F0-ADC4-BF3F1110C043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
