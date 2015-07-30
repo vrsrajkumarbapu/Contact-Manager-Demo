@@ -1,5 +1,4 @@
 E:\samples\ContactManager\ContactManagerDomain\bin\ContactManagerDomain.dll
 E:\samples\ContactManager\ContactManagerDomain\bin\ContactManagerDomain.pdb
-E:\samples\ContactManager\ContactManagerDomain\obj\Debug\ContactManagerDomain.csprojResolveAssemblyReference.cache
 E:\samples\ContactManager\ContactManagerDomain\obj\Debug\ContactManagerDomain.dll
 E:\samples\ContactManager\ContactManagerDomain\obj\Debug\ContactManagerDomain.pdb

@@ -40,6 +40,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,9 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ContactDetail.cs" />
+    <Compile Include="Models\Contacts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryInterfaces\IContactDetailRepository.cs" />
+    <Compile Include="RepositoryInterfaces\IContactsRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

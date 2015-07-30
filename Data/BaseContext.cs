@@ -10,12 +10,10 @@ namespace ContactManagerData
     {
         static BaseContext()
         {
-            //If model Changes Drop and Create Database again
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TContext>());
         }
-        //Setting connection string
         public BaseContext()
-            : base(@"Server=.\sqlexpress;database=ContactManagerDb;integrated security=true;")
+            : base(@"Server=.\sqlexpress;database=ContactsManagerDb;integrated security=true;")
         { }
     }
 }

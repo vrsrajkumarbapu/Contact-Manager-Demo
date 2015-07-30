@@ -1,5 +1,11 @@
-﻿
-//Root Controller
+﻿var webAPIURL = "http://localhost:63008";
+var headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
+    'Access-Control-Allow-Headers': 'true',
+    'Access-Control-Allow-Credendtials': 'true',
+    'Content-Type': 'application/json;charset=utf-8'
+};
 window.app = angular.module('contactDetailApp', ['ngRoute', 'ngResource', 'ngCookies']);
 debugger;
 app.config(['$routeProvider', function ($routeProvider) {
@@ -31,8 +37,6 @@ app.directive('numeric', function () {
     };
 });
 app.controller('DemoController', function ($scope, dataService) {
-    //$scope.contactdetaildata = [];
-    //clearText();
     $scope.show = true;
     loadRecords();
 
@@ -40,7 +44,9 @@ app.controller('DemoController', function ($scope, dataService) {
     function loadRecords() {
         var contactdetaildata = dataService.get();
         contactdetaildata.then(function (pdata) {
+
             $scope.contactdetaildata = pdata.data;
+            
             $scope.show = true;
         },
         function (error) {
@@ -62,34 +68,49 @@ app.controller('DemoController', function ($scope, dataService) {
     };
     
     $scope.cancel = function () {
-        //$scope.clear();
         $scope.show = true;
         
     };
     $scope.select = function (data) {
+        debugger;
         $scope.show = false;
-        $scope.contactdetail = data;
+        $scope.contactdetail = angular.copy(data);     
+        $scope.contactdetail.Born = new Date($scope.contactdetail.Born);
     };
+    function getDateFormat(date)
+    {
+        return new Date(date.getFullYear(), date.getMonth(), date.getDay())
+    }
     $scope.save = function () {
         debugger;
-        var saveData = $scope.contactdetail;
-        if (saveData.ID > 0) {
-            var updateContactdetail = dataService.put(saveData);
-            updateContactdetail.then(function (prmData) {
-                alert('Data updated');
-               
-                loadRecords();
-            }, function (error) {
-                alert('An error occured');
-            });
-        }
-        else {
-            var saveContactdetail = dataService.post(saveData);
-            saveContactdetail.then(function (pdata) {
-                loadRecords();
-            }, function (error) {
-            });
-            clearText();
+        if ($scope.contactdetail.FirstName != "") {
+            debugger;
+            $scope.contactdetail.Born = getDateFormat($scope.contactdetail.Born);
+            var saveData = $scope.contactdetail;
+            if (saveData.ID > 0) {
+                var updateContactdetail = dataService.put(saveData);
+                updateContactdetail.then(function (prmData) {
+                    alert('Data updated');
+                    debugger;
+                    loadRecords();
+                    clearText();
+                }, function (error) {
+                    debugger;
+                    alert('An error occured');
+                });
+            }
+            else {
+                var saveContactdetail = dataService.post(saveData);
+                saveContactdetail.then(function (pdata) {
+                    loadRecords();
+                    clearText();
+                    debugger;
+                }, function (error) {
+                    debugger;
+                });
+                debugger;
+           
+            }
         }
     };
     $scope.clear = function () {
@@ -104,7 +125,7 @@ app.controller('DemoController', function ($scope, dataService) {
 });
 var app=
 angular.module('contactDetailApp').service('dataService', ['$http', function ($http) {
-    var baseUrl = "/api/contactdetail/";
+    var baseUrl = webAPIURL+"/api/contacts/";
     this.post = function (contactdetail) {
         var request = $http({
             method: 'post',

@@ -8,25 +8,24 @@ using ContactManagerDomain.Models;
 using ContactManagerDomain.RepositoryInterfaces;
 namespace ContactManagerService
 {
-    //Implementing facade/service pattern
     public class ContactManagerCRUDService
     {
-        IContactDetailRepository _repo = new ContactDetailRepository();
-        public void Add(ContactDetail contactDetail)
-        {
-            _repo.Add(contactDetail);
-        }
-        public void update(ContactDetail contactDetail)
-        {
-            _repo.Update(contactDetail);
-        }
-        public void Delete(int id)
-        {
-            _repo.Delete(id);
-        }
-        public ICollection<ContactDetail> ContactDetail
-        {
-            get { return _repo.ContactDetail(); }
-        }
+        //IContactDetailRepository _repo = new ContactDetailRepository();
+        //public void Add(ContactDetail contactDetail)
+        //{
+        //    _repo.Add(contactDetail);
+        //}
+        //public void update(ContactDetail contactDetail)
+        //{
+        //    _repo.Update(contactDetail);
+        //}
+        //public void Delete(int id)
+        //{
+        //    _repo.Delete(id);
+        //}
+        //public ICollection<ContactDetail> ContactDetail
+        //{
+        //    get { return _repo.ContactDetail(); }
+        //}
     }
 }

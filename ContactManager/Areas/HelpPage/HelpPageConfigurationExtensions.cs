@@ -15,151 +15,70 @@ namespace ContactManager.Areas.HelpPage
     {
         private const string ApiModelPrefix = "MS_HelpPageApiModel_";
 
-        /// <summary>
-        /// Sets the documentation provider for help page.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="documentationProvider">The documentation provider.</param>
         public static void SetDocumentationProvider(this HttpConfiguration config, IDocumentationProvider documentationProvider)
         {
             config.Services.Replace(typeof(IDocumentationProvider), documentationProvider);
         }
 
-        /// <summary>
-        /// Sets the objects that will be used by the formatters to produce sample requests/responses.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sampleObjects">The sample objects.</param>
         public static void SetSampleObjects(this HttpConfiguration config, IDictionary<Type, object> sampleObjects)
         {
             config.GetHelpPageSampleGenerator().SampleObjects = sampleObjects;
         }
 
-        /// <summary>
-        /// Sets the sample request directly for the specified media type and action.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample request.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
         public static void SetSampleRequest(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Request, controllerName, actionName, new[] { "*" }), sample);
         }
 
-        /// <summary>
-        /// Sets the sample request directly for the specified media type and action with parameters.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample request.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+     
         public static void SetSampleRequest(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Request, controllerName, actionName, parameterNames), sample);
         }
 
-        /// <summary>
-        /// Sets the sample request directly for the specified media type of the action.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample response.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
+     
         public static void SetSampleResponse(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Response, controllerName, actionName, new[] { "*" }), sample);
         }
 
-        /// <summary>
-        /// Sets the sample response directly for the specified media type of the action with specific parameters.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample response.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+      
         public static void SetSampleResponse(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Response, controllerName, actionName, parameterNames), sample);
         }
 
-        /// <summary>
-        /// Sets the sample directly for all actions with the specified type and media type.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="type">The parameter type or return type of an action.</param>
+    
         public static void SetSampleForType(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, Type type)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, type), sample);
         }
 
-        /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action. 
-        /// The help page will use this information to produce more accurate request samples.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
+     
         public static void SetActualRequestType(this HttpConfiguration config, Type type, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Request, controllerName, actionName, new[] { "*" }), type);
         }
 
-        /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action. 
-        /// The help page will use this information to produce more accurate request samples.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+       
         public static void SetActualRequestType(this HttpConfiguration config, Type type, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Request, controllerName, actionName, parameterNames), type);
         }
 
-        /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action. 
-        /// The help page will use this information to produce more accurate response samples.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
+     
         public static void SetActualResponseType(this HttpConfiguration config, Type type, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Response, controllerName, actionName, new[] { "*" }), type);
         }
 
-        /// <summary>
-        /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action. 
-        /// The help page will use this information to produce more accurate response samples.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+      
         public static void SetActualResponseType(this HttpConfiguration config, Type type, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Response, controllerName, actionName, parameterNames), type);
         }
 
-        /// <summary>
-        /// Gets the help page sample generator.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <returns>The help page sample generator.</returns>
+      
         public static HelpPageSampleGenerator GetHelpPageSampleGenerator(this HttpConfiguration config)
         {
             return (HelpPageSampleGenerator)config.Properties.GetOrAdd(
@@ -167,11 +86,7 @@ namespace ContactManager.Areas.HelpPage
                 k => new HelpPageSampleGenerator());
         }
 
-        /// <summary>
-        /// Sets the help page sample generator.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sampleGenerator">The help page sample generator.</param>
+      
         public static void SetHelpPageSampleGenerator(this HttpConfiguration config, HelpPageSampleGenerator sampleGenerator)
         {
             config.Properties.AddOrUpdate(
@@ -180,14 +95,7 @@ namespace ContactManager.Areas.HelpPage
                 (k, o) => sampleGenerator);
         }
 
-        /// <summary>
-        /// Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
-        /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="apiDescriptionId">The <see cref="ApiDescription"/> ID.</param>
-        /// <returns>
-        /// An <see cref="HelpPageApiModel"/>
-        /// </returns>
+    
         public static HelpPageApiModel GetHelpPageApiModel(this HttpConfiguration config, string apiDescriptionId)
         {
             object model;

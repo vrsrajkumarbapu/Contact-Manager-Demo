@@ -17,7 +17,6 @@ E:\samples\ContactManager\ContactManager\bin\System.Web.WebPages.Deployment.dll
 E:\samples\ContactManager\ContactManager\bin\System.Web.WebPages.dll
 E:\samples\ContactManager\ContactManager\bin\System.Web.WebPages.Razor.dll
 E:\samples\ContactManager\ContactManager\bin\WebGrease.dll
-E:\samples\ContactManager\ContactManager\bin\Data.dll
 E:\samples\ContactManager\ContactManager\bin\ContactManagerDomain.pdb
 E:\samples\ContactManager\ContactManager\bin\ContactManagerService.pdb
 E:\samples\ContactManager\ContactManager\bin\EntityFramework.xml
@@ -28,7 +27,6 @@ E:\samples\ContactManager\ContactManager\bin\System.Web.Razor.xml
 E:\samples\ContactManager\ContactManager\bin\System.Web.WebPages.xml
 E:\samples\ContactManager\ContactManager\bin\System.Web.WebPages.Deployment.xml
 E:\samples\ContactManager\ContactManager\bin\System.Web.WebPages.Razor.xml
-E:\samples\ContactManager\ContactManager\bin\Data.pdb
 E:\samples\ContactManager\ContactManager\obj\Debug\ContactManager.csprojResolveAssemblyReference.cache
 E:\samples\ContactManager\ContactManager\obj\Debug\ContactManager.dll
 E:\samples\ContactManager\ContactManager\obj\Debug\ContactManager.pdb

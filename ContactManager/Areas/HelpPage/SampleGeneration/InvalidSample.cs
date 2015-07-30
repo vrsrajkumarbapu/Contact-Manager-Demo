@@ -2,9 +2,7 @@ using System;
 
 namespace ContactManager.Areas.HelpPage
 {
-    /// <summary>
-    /// This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
-    /// </summary>
+   
     public class InvalidSample
     {
         public InvalidSample(string errorMessage)

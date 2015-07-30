@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4690E1
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactManagerWebApi", "ContactManagerWebApi\ContactManagerWebApi.csproj", "{72FC88B2-D329-4153-91E7-5CEB7148DAEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{619F6B4E-A10F-4DEE-B40A-785E24DB4D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72FC88B2-D329-4153-91E7-5CEB7148DAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72FC88B2-D329-4153-91E7-5CEB7148DAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72FC88B2-D329-4153-91E7-5CEB7148DAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72FC88B2-D329-4153-91E7-5CEB7148DAEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

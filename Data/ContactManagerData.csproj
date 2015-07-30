@@ -60,10 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseContext.cs" />
-    <Compile Include="ContactDetailContext.cs" />
-    <Compile Include="ModelConfig\ContantDetailConfiguration.cs" />
+    <Compile Include="ContactsContext.cs" />
+    <Compile Include="ModelConfig\ContactsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ContactDetailRepository.cs" />
+    <Compile Include="Repository\ContactsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ContactManagerDomain\ContactManagerDomain.csproj">
